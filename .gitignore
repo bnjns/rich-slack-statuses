@@ -30,3 +30,4 @@ out/
 /package/
 .env
 .DS_Store
+*credentials.json

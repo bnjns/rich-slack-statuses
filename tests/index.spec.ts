@@ -1,4 +1,4 @@
-import { example } from '../src/index'
+import { example } from '../src'
 
 describe('the index file', () => {
   it('should work', () => {

@@ -24,19 +24,75 @@ _TODO_
 
 ### Prerequisites
 
-_TODO_
+- Nodejs 14.14+
+- Yarn 1
+- GCP service account (required to read from a Google Calendar)
 
 ### Installing
 
-_TODO_
+Clone the repository:
+
+```sh
+git clone git@github.com:bnjns/rich-slack-statuses.git
+```
+
+Install dependencies:
+
+```sh
+yarn install
+```
+
+### Configuring
+
+#### Calendars
+| Environment variable |  Type  | Required | Default  | Description                                                                        |
+|:---------------------|:------:|:--------:|:---------|:-----------------------------------------------------------------------------------|
+| `CALENDAR_TYPE`      | string |    N     | `google` | The type of calendar to determine the status from. Currently can only be `google`. |
+| `CALENDAR_ID`        | string |    Y     | N/A      | The ID of the calendar to determine the status from.                               |
+
+#### GCP service account
+
+| Environment variable |  Type  | Required | Default  | Description                                                                        |
+|:---------------------|:------:|:--------:|:---------|:-----------------------------------------------------------------------------------|
+| `GOOGLE_CREDENTIALS` |  JSON  |    N     | N/A      | The JSON credentials of the GCP service account, if reading from Google.           |
+
+Alternatively, you can place the JSON credentials in a `gcp-credentials.json` file, in the root of the app (or `src` if
+running locally).
 
 ## 🔧 Running the tests
 
-_TODO_
+Simply run the tests using the yarn script:
+
+```sh
+yarn test
+```
+
+You can also watch for changes and automatically with:
+
+```sh
+yarn test:watch
+```
 
 ## 🎈 Usage
 
-_TODO_
+### Calendars
+
+This can currently read calendars from the following:
+
+| Type     | Details                             |
+|:---------|:------------------------------------|
+| `google` | [Google Calendar](#google-calendar) |
+
+Select the desired calendar with the `CALENDAR_TYPE` environment variable (defaults to `google`).
+
+#### Google Calendar
+
+Ensure you have a GCP service account which has read access to the desired calendar:
+
+- _Settings and sharing_ > _Share with specific people_
+- Add the service account email with the _See all event details_ permission
+
+The calendar can then be configured by setting the `CALENDAR_ID` environment variable.
 
 ## 🚀 Deploying
 
@@ -45,7 +101,6 @@ _TODO_
 ## ⛏️ Built Using
 
 _TODO_
-
 
 ## ✍️ Authors
 
