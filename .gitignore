@@ -1,0 +1,32 @@
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### CircleCI ###
+.circleci/*.json
+
+### Node ###
+/node_modules/
+/yarn-error.log
+
+### Project ###
+/reports/
+/coverage/
+/dist/
+/dist*.zip
+/package/
+.env
+.DS_Store

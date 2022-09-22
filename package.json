@@ -1,0 +1,33 @@
+{
+  "name": "rich-slack-statuses",
+  "version": "0.0.1",
+  "description": "Allows you to automate rich Slack statuses, based on your calendar",
+  "main": "index.js",
+  "repository": "https://github.com/bnjns/rich-slack-statuses",
+  "author": "Ben Jones <ben@bnjns.uk>",
+  "license": "GPL-3.0-only",
+  "scripts": {
+    "build": "scripts/build.sh",
+    "build:lambda": "scripts/build.sh --lambda",
+    "build:package": "scripts/build.sh --package",
+    "lint": "npx eslint './src/**/*.ts'",
+    "run:local": "rm -rf dist && tsc && NODE_ENV=development node dist/local.js",
+    "test": "npx jest",
+    "test:watch": "npx jest --watch"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.4",
+    "@typescript-eslint/eslint-plugin": "^4.20.0",
+    "@typescript-eslint/parser": "^4.20.0",
+    "eslint": "^7.5.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^26.1.0",
+    "jest-junit": "^11.0.1",
+    "ts-jest": "^26.1.3",
+    "ts-node": "^9.1.1",
+    "typescript": "^3.9.7"
+  }
+}
