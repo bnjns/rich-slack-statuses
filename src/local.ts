@@ -5,7 +5,5 @@ import { getEnv } from './config'
 (async() => {
   const calendarId = getEnv('CALENDAR_ID')
 
-  const events = await getActiveEvents(calendarId)
-
-  console.log('events', events)
+  await getActiveEvents(calendarId)
 })()
