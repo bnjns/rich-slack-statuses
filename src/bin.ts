@@ -1,3 +1,5 @@
-import { example } from './index'
+import execute from './index'
 
-console.log(example())
+(async() => {
+  await execute()
+})()

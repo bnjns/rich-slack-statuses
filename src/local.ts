@@ -1,9 +1,18 @@
-import { getActiveEvents } from './calandars'
-import { getEnv } from './config'
+import execute from './index'
 
-// TODO: this just temporary
+type CommandAction = 'execute'
+type ActionMap = Record<CommandAction, () => Promise<void>>
+
 (async() => {
-  const calendarId = getEnv('CALENDAR_ID')
+  const action = process.argv.slice(2)[0]
 
-  await getActiveEvents(calendarId)
+  const actionMap: ActionMap = {
+    execute
+  }
+
+  if (!Object.keys(actionMap).includes(action)) {
+    throw Error(`Unknown action: ${action}`)
+  }
+
+  await actionMap[action as CommandAction]()
 })()
