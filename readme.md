@@ -27,6 +27,7 @@ _TODO_
 - Nodejs 14.14+
 - Yarn 1
 - GCP service account (required to read from a Google Calendar)
+- Slack app
 
 ### Installing
 
@@ -50,14 +51,19 @@ yarn install
 | `CALENDAR_TYPE`      | string |    N     | `google` | The type of calendar to determine the status from. Currently can only be `google`. |
 | `CALENDAR_ID`        | string |    Y     | N/A      | The ID of the calendar to determine the status from.                               |
 
+#### Slack
+
+| Environment variable |  Type  | Required | Default | Description                                                                        |
+|:---------------------|:------:|:--------:|:--------|:-----------------------------------------------------------------------------------|
+| `SLACK_TOKEN`        | string |    Y     | N/A     | The _User OAuth Token_ of the [Slack app](#slack-app) installed on your workspace. |
+
 #### GCP service account
 
 | Environment variable |  Type  | Required | Default  | Description                                                                        |
 |:---------------------|:------:|:--------:|:---------|:-----------------------------------------------------------------------------------|
 | `GOOGLE_CREDENTIALS` |  JSON  |    N     | N/A      | The JSON credentials of the GCP service account, if reading from Google.           |
 
-Alternatively, you can place the JSON credentials in a `gcp-credentials.json` file, in the root of the app (or `src` if
-running locally).
+Alternatively, you can place the JSON credentials in a `gcp-credentials.json` file, in the root of the app.
 
 ## 🔧 Running the tests
 
@@ -74,6 +80,14 @@ yarn test:watch
 ```
 
 ## 🎈 Usage
+
+### Slack app
+
+<!--
+TODO:
+- Scopes required
+
+-->
 
 ### Calendars
 

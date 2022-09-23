@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 
 interface CalendarEvent {
-  title?: string
+  title: string
   description?: string
   start: DateTime
   end: DateTime
