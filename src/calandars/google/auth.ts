@@ -8,7 +8,7 @@ const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 const CREDENTIALS_PATH = path.join(process.cwd(), 'gcp-credentials.json')
 const CREDENTIALS_ENV_NAME = 'GOOGLE_CREDENTIALS'
 
-const getCredentials = (): Pick<Auth.GoogleAuthOptions, 'keyFile' | 'credentials'> => {
+export const getCredentials = (): Pick<Auth.GoogleAuthOptions, 'keyFile' | 'credentials'> => {
   if (fs.existsSync(CREDENTIALS_PATH)) {
     logger.debug(`Loading credentials from file: ${CREDENTIALS_PATH}`)
     return {
