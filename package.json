@@ -11,15 +11,17 @@
     "build:lambda": "scripts/build.sh --lambda",
     "build:package": "scripts/build.sh --package",
     "lint": "npx eslint './src/**/*.ts'",
-    "run:local": "rm -rf dist && tsc && NODE_ENV=development node dist/local.js",
+    "run:local": "NODE_ENV=development ts-node src/local.ts",
     "test": "npx jest",
     "test:watch": "npx jest --watch"
   },
   "devDependencies": {
     "@types/jest": "^29.0.3",
+    "@types/luxon": "^3.0.1",
+    "@types/node": "^16.0.0",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
-    "eslint": "^8.23.1",
+    "eslint": "8.22.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.0.1",
@@ -29,5 +31,11 @@
     "ts-jest": "^29.0.1",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "@google-cloud/local-auth": "^2.1.1",
+    "googleapis": "^108.0.0",
+    "luxon": "^3.0.3",
+    "winston": "^3.8.2"
   }
 }
