@@ -3,9 +3,9 @@ import { callWebApi } from './config'
 import logger from '../utils/logging'
 
 interface StatusParams {
-  status: string
-  emoji: string
-  expire: DateTime
+  status?: string
+  emoji?: string
+  expire?: DateTime
 }
 
 export const buildProfile = (params?: StatusParams): string => JSON.stringify({
