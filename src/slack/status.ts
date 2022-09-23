@@ -28,5 +28,6 @@ export const handleStatus = async(params?: StatusParams): Promise<void> => {
         'Failed to clear status',
         error
       )
+      return Promise.reject(error)
     })
 }
