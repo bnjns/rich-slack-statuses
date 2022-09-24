@@ -62,6 +62,9 @@ jobs:
         with:
           name: coverage
           path: coverage/
+      - run: |
+          ls -la
+          ls -la coverage
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
