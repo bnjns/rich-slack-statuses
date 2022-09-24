@@ -2,7 +2,7 @@
 import { DateTime } from 'luxon'
 import { buildProfile, handleStatus } from '../../src/slack/status'
 import { client } from '../../src/slack/config'
-import { WebAPICallResult } from '@slack/web-api/dist/WebClient'
+import { failedPromise, nonOkPromise, successPromise } from './fixtures'
 
 describe('building the profile', () => {
   it('providing no status should set the text to null', () => {
@@ -90,7 +90,7 @@ describe('handling a status change', () => {
   })
 
   it('no status to update should clear the status', async() => {
-    const mockedSet = jest.fn().mockImplementation((): Promise<WebAPICallResult> => Promise.resolve({ ok: true }))
+    const mockedSet = jest.fn().mockImplementation(successPromise)
     mockedClient.users.profile.set = mockedSet
     const expectedProfile = JSON.stringify({
       status_text: null,
@@ -105,7 +105,7 @@ describe('handling a status change', () => {
   })
 
   it('providing a status to update should call the API with that status', async() => {
-    const mockedSet = jest.fn().mockImplementation((): Promise<WebAPICallResult> => Promise.resolve({ ok: true }))
+    const mockedSet = jest.fn().mockImplementation(successPromise)
     mockedClient.users.profile.set = mockedSet
     const expectedProfile = JSON.stringify({
       status_text: 'status',
@@ -127,7 +127,7 @@ describe('handling a status change', () => {
   it('a failed request to slack should be handled', async() => {
     expect.assertions(1)
 
-    const mockedSet = jest.fn().mockImplementation((): Promise<WebAPICallResult> => Promise.resolve({ ok: false }))
+    const mockedSet = jest.fn().mockImplementation(nonOkPromise)
     mockedClient.users.profile.set = mockedSet
 
     await expect(handleStatus()).rejects.toEqual(Error('The Slack API returned a non-ok status'))
@@ -136,7 +136,7 @@ describe('handling a status change', () => {
   it('a request to slack which throws an error should be handled', async() => {
     expect.assertions(1)
 
-    const mockedSet = jest.fn().mockImplementation((): Promise<WebAPICallResult> => Promise.reject(new Error('An example error')))
+    const mockedSet = jest.fn().mockImplementation(failedPromise)
     mockedClient.users.profile.set = mockedSet
 
     await expect(handleStatus()).rejects.toEqual(new Error('An example error'))

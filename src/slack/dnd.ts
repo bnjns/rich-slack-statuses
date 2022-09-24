@@ -20,6 +20,7 @@ export const handleDoNotDisturb = async({ enable, start, end }: DoNotDisturbPara
       })
       .catch(error => {
         logger.error('Failed to enable Do Not Disturb', error)
+        return Promise.reject(error)
       })
   } else {
     logger.debug('Disabling do not disturb (snooze)')
@@ -29,6 +30,7 @@ export const handleDoNotDisturb = async({ enable, start, end }: DoNotDisturbPara
       })
       .catch(error => {
         logger.error('Failed to disable Do Not Disturb', error)
+        return Promise.reject(error)
       })
   }
 }
