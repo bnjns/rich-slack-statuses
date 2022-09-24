@@ -49,6 +49,11 @@ jobs:
           name: coverage
           path: coverage/
           retention-days: 1
+      - uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: reports/
+          retention-days: 1
 
   sonarcloud:
     runs-on: ubuntu-latest
@@ -62,9 +67,10 @@ jobs:
         with:
           name: coverage
           path: coverage/
-      - run: |
-          ls -la
-          ls -la coverage
+      - uses: actions/download-artifact@v3
+        with:
+          name: test-reports
+          path: reports/
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
