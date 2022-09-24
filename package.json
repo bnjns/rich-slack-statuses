@@ -13,7 +13,7 @@
     "lint": "npx eslint './src/**/*.ts'",
     "run:local": "NODE_ENV=development ts-node src/local.ts",
     "test": "npx jest",
-    "test:watch": "npx jest --watch"
+    "test:watch": "npx jest --watch --all"
   },
   "devDependencies": {
     "@types/jest": "^29.0.3",
@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@google-cloud/local-auth": "^2.1.1",
+    "@slack/web-api": "^6.7.2",
     "googleapis": "^108.0.0",
     "luxon": "^3.0.3",
     "winston": "^3.8.2"

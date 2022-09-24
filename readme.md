@@ -27,6 +27,7 @@ _TODO_
 - Nodejs 14.14+
 - Yarn 1
 - GCP service account (required to read from a Google Calendar)
+- [Slack app](#slack-app)
 
 ### Installing
 
@@ -45,10 +46,17 @@ yarn install
 ### Configuring
 
 #### Calendars
+
 | Environment variable |  Type  | Required | Default  | Description                                                                        |
 |:---------------------|:------:|:--------:|:---------|:-----------------------------------------------------------------------------------|
 | `CALENDAR_TYPE`      | string |    N     | `google` | The type of calendar to determine the status from. Currently can only be `google`. |
 | `CALENDAR_ID`        | string |    Y     | N/A      | The ID of the calendar to determine the status from.                               |
+
+#### Slack
+
+| Environment variable |  Type  | Required | Default | Description                                                                        |
+|:---------------------|:------:|:--------:|:--------|:-----------------------------------------------------------------------------------|
+| `SLACK_TOKEN`        | string |    Y     | N/A     | The _User OAuth Token_ of the [Slack app](#slack-app) installed on your workspace. |
 
 #### GCP service account
 
@@ -56,10 +64,9 @@ yarn install
 |:---------------------|:------:|:--------:|:---------|:-----------------------------------------------------------------------------------|
 | `GOOGLE_CREDENTIALS` |  JSON  |    N     | N/A      | The JSON credentials of the GCP service account, if reading from Google.           |
 
-Alternatively, you can place the JSON credentials in a `gcp-credentials.json` file, in the root of the app (or `src` if
-running locally).
+Alternatively, you can place the JSON credentials in a `gcp-credentials.json` file, in the root of the app.
 
-## 🔧 Running the tests
+###  Running the tests
 
 Simply run the tests using the yarn script:
 
@@ -73,7 +80,39 @@ You can also watch for changes and automatically with:
 yarn test:watch
 ```
 
-## 🎈 Usage
+### Running manually
+
+You can run the application manually using
+
+```sh
+yarn run:local <command> [...<options>]
+```
+
+with any of the following commands:
+
+- `clear-status`: Clear your Slack status.
+- `execute`: Run the entire app flow, from reading the calendar to updating Slack.
+- `set-status`: Set your Slack status, with an optional event title as a 2nd argument. For example,
+  ```sh
+  yarn run:local set-status ':calendar: [DND] An example event'
+  ```
+
+
+## 🎈 Features
+
+### Slack app
+
+At the moment, you will need to create your own Slack app within your workspace; simply head
+to <https://api.slack.com/apps>, and click _Create New App_. You can use the [included manifest](slack_manifest.yaml) to
+simply the process.
+
+Once created, you will need to install it to the workspace; go to _Settings > Install App_ and press _Install to
+Workspace_. This may require administrator approval, depending on your workspace settings.
+
+Once installed, you can configure the `SLACK_TOKEN` variable with your _User OAuth Token_.
+
+> **Note:** The _User OAuth Token_ is specific to a user; each user wishing to use this application will need to install
+> it themselves
 
 ### Calendars
 

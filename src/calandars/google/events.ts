@@ -8,7 +8,7 @@ import logger from '../../utils/logging'
 // eslint-disable-next-line camelcase
 export const mapEvent = (event: calendar_v3.Schema$Event): CalendarEvent => {
   return {
-    title: event.summary || undefined,
+    title: event.summary || '',
     description: event.description || undefined,
     start: DateTime.fromISO(event.start?.dateTime || '', { zone: event.start?.timeZone || undefined }),
     end: DateTime.fromISO(event.start?.dateTime || '', { zone: event.start?.timeZone || undefined })

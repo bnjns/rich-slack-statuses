@@ -7,6 +7,12 @@ module.exports = {
   testMatch: [
     '**/tests/**/*.spec.ts'
   ],
+  setupFiles: ['<rootDir>/tests/setupEnv.js'],
+  transform: {
+    '\\.ts$': ['ts-jest', {
+      tsConfig: '<rootDir>/tsconfig.tests.json'
+    }]
+  },
   reporters: [
     'default', [
       'jest-junit', {
