@@ -7,6 +7,6 @@ oauth_config:
       - users.profile:write
       - users:write
 settings:
-  org_deploy_enabled: false # Set to true to disable to your entire org (Enterprise)
+  org_deploy_enabled: false # Set to true to install to your entire org (Enterprise)
   socket_mode_enabled: false
   token_rotation_enabled: false # Recommended you set this to true for security
