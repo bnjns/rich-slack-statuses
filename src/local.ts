@@ -17,15 +17,13 @@ type ActionMap = Record<CommandAction, () => Promise<void>>
       getActiveEvents(process.argv.slice(3)[0] || getEnv('CALENDAR_ID'))
         .then(console.log),
     'clear-status': clearStatus,
-    'set-status': async() => {
-      const event = parseEvent({
+    'set-status': async() =>
+      parseEvent({
         title: process.argv.slice(3)[0] || 'Example event',
         start: DateTime.now(),
         end: DateTime.now().plus({ minute: 5 })
       })
-
-      return setStatus(event)
-    }
+        .then(setStatus)
   }
 
   if (!Object.keys(actionMap).includes(action)) {

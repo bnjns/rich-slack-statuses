@@ -25,7 +25,7 @@ export const getActiveEvents = async(calendarId: string): Promise<CalendarEvent[
 
   return calendarTypeMap[configuredCalendar](now, calendarId)
     .then(events => {
-      logger.info(`Found ${events.length} events`)
+      logger.info(`Found ${events.length} active events`)
       return events
     })
 }
