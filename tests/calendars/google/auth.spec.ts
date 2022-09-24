@@ -1,5 +1,5 @@
 import * as fs from 'fs'
-import { getCredentials } from '../../../src/calandars/google/auth'
+import { CREDENTIALS_PATH, getCredentials } from '../../../src/calandars/google/auth'
 
 describe('getting the credentials', () => {
   const OLD_ENV = process.env
@@ -16,13 +16,13 @@ describe('getting the credentials', () => {
   })
 
   it('should set the keyFile attribute if a credentials file exists', () => {
-    fs.writeFileSync('gcp-credentials.json', JSON.stringify(exampleCredentials))
+    fs.writeFileSync(CREDENTIALS_PATH, JSON.stringify(exampleCredentials))
 
     const auth = getCredentials()
     expect(auth.credentials).toBeUndefined()
     expect(auth.keyFile).toBeTruthy()
 
-    fs.rmSync('gcp-credentials.json')
+    fs.rmSync(CREDENTIALS_PATH)
   })
 
 
