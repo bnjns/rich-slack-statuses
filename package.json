@@ -13,7 +13,7 @@
     "lint": "npx eslint './src/**/*.ts'",
     "run:local": "NODE_ENV=development ts-node src/local.ts",
     "test": "npx jest",
-    "test:watch": "npx jest --watch"
+    "test:watch": "npx jest --watch --all"
   },
   "devDependencies": {
     "@types/jest": "^29.0.3",

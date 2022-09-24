@@ -123,6 +123,7 @@ describe('handling a status change', () => {
     expect(mockedSet).toHaveBeenCalledWith({ profile: expectedProfile })
   })
 
+  // TODO: should this be moved to a test on callWebApi?
   it('a failed request to slack should be handled', async() => {
     expect.assertions(1)
 
@@ -135,9 +136,9 @@ describe('handling a status change', () => {
   it('a request to slack which throws an error should be handled', async() => {
     expect.assertions(1)
 
-    const mockedSet = jest.fn().mockImplementation((): Promise<WebAPICallResult> => Promise.reject(Error('An example error')))
+    const mockedSet = jest.fn().mockImplementation((): Promise<WebAPICallResult> => Promise.reject(new Error('An example error')))
     mockedClient.users.profile.set = mockedSet
 
-    await expect(handleStatus()).rejects.toEqual(Error('An example error'))
+    await expect(handleStatus()).rejects.toEqual(new Error('An example error'))
   })
 })

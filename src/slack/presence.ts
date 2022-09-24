@@ -15,5 +15,6 @@ export const handlePresence = async({ setAway }: PresenceParams): Promise<void> 
     })
     .catch(error => {
       logger.warn(`Failed to set presence to ${presence}`, error)
+      return Promise.reject(error)
     })
 }
