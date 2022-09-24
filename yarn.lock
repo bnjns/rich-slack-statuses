@@ -2697,6 +2697,13 @@ jest-snapshot@^29.0.3:
     pretty-format "^29.0.3"
     semver "^7.3.5"
 
+jest-sonar-reporter@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/jest-sonar-reporter/-/jest-sonar-reporter-2.0.0.tgz#faa54a7d2af7198767ee246a82b78c576789cf08"
+  integrity sha512-ZervDCgEX5gdUbdtWsjdipLN3bKJwpxbvhkYNXTAYvAckCihobSLr9OT/IuyNIRT1EZMDDwR6DroWtrq+IL64w==
+  dependencies:
+    xml "^1.0.1"
+
 jest-util@^29.0.0, jest-util@^29.0.3:
   version "29.0.3"
   resolved "https://registry.yarnpkg.com/jest-util/-/jest-util-29.0.3.tgz#06d1d77f9a1bea380f121897d78695902959fbc0"
