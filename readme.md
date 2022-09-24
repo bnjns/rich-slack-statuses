@@ -66,7 +66,7 @@ yarn install
 
 Alternatively, you can place the JSON credentials in a `gcp-credentials.json` file, in the root of the app.
 
-## 🔧 Running the tests
+###  Running the tests
 
 Simply run the tests using the yarn script:
 
@@ -80,7 +80,25 @@ You can also watch for changes and automatically with:
 yarn test:watch
 ```
 
-## 🎈 Usage
+### Running manually
+
+You can run the application manually using
+
+```sh
+yarn run:local <command> [...<options>]
+```
+
+with any of the following commands:
+
+- `clear-status`: Clear your Slack status.
+- `execute`: Run the entire app flow, from reading the calendar to updating Slack.
+- `set-status`: Set your Slack status, with an optional event title as a 2nd argument. For example,
+  ```sh
+  yarn run:local set-status ':calendar: [DND] An example event'
+  ```
+
+
+## 🎈 Features
 
 ### Slack app
 
