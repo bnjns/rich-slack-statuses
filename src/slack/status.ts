@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { callWebApi } from './config'
+import { callWebApi } from './client'
 import logger from '../utils/logging'
 
 interface StatusParams {

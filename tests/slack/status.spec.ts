@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { DateTime } from 'luxon'
 import { buildProfile, handleStatus } from '../../src/slack/status'
-import { client } from '../../src/slack/config'
+import { client } from '../../src/slack/client'
 import { failedPromise, nonOkPromise, successPromise } from './fixtures'
 
 describe('building the profile', () => {
@@ -79,8 +79,8 @@ describe('building the profile', () => {
 })
 
 
-jest.mock('../../src/slack/config', () => ({
-  ...(jest.requireActual('../../src/slack/config'))
+jest.mock('../../src/slack/client', () => ({
+  ...(jest.requireActual('../../src/slack/client'))
 }))
 const mockedClient = client as jest.Mocked<typeof client>
 
@@ -121,16 +121,6 @@ describe('handling a status change', () => {
 
     expect(mockedSet).toHaveBeenCalledTimes(1)
     expect(mockedSet).toHaveBeenCalledWith({ profile: expectedProfile })
-  })
-
-  // TODO: should this be moved to a test on callWebApi?
-  it('a failed request to slack should be handled', async() => {
-    expect.assertions(1)
-
-    const mockedSet = jest.fn().mockImplementation(nonOkPromise)
-    mockedClient.users.profile.set = mockedSet
-
-    await expect(handleStatus()).rejects.toEqual(Error('The Slack API returned a non-ok status'))
   })
 
   it('a request to slack which throws an error should be handled', async() => {

@@ -1,10 +1,9 @@
-import { client } from '../../src/slack/config'
-import { WebAPICallResult } from '@slack/web-api'
+import { client } from '../../src/slack/client'
 import { handlePresence } from '../../src/slack/presence'
 import { failedPromise, successPromise } from './fixtures'
 
-jest.mock('../../src/slack/config', () => ({
-  ...(jest.requireActual('../../src/slack/config'))
+jest.mock('../../src/slack/client', () => ({
+  ...(jest.requireActual('../../src/slack/client'))
 }))
 const mockedClient = client as jest.Mocked<typeof client>
 

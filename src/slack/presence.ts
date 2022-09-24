@@ -1,4 +1,4 @@
-import { callWebApi } from './config'
+import { callWebApi } from './client'
 import logger from '../utils/logging'
 
 export interface PresenceParams {
