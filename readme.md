@@ -27,7 +27,7 @@ _TODO_
 - Nodejs 14.14+
 - Yarn 1
 - GCP service account (required to read from a Google Calendar)
-- Slack app
+- [Slack app](#slack-app)
 
 ### Installing
 
@@ -46,6 +46,7 @@ yarn install
 ### Configuring
 
 #### Calendars
+
 | Environment variable |  Type  | Required | Default  | Description                                                                        |
 |:---------------------|:------:|:--------:|:---------|:-----------------------------------------------------------------------------------|
 | `CALENDAR_TYPE`      | string |    N     | `google` | The type of calendar to determine the status from. Currently can only be `google`. |
@@ -83,11 +84,17 @@ yarn test:watch
 
 ### Slack app
 
-<!--
-TODO:
-- Scopes required
+At the moment, you will need to create your own Slack app within your workspace; simply head
+to <https://api.slack.com/apps>, and click _Create New App_. You can use the [included manifest](slack_manifest.yaml) to
+simply the process.
 
--->
+Once created, you will need to install it to the workspace; go to _Settings > Install App_ and press _Install to
+Workspace_. This may require administrator approval, depending on your workspace settings.
+
+Once installed, you can configure the `SLACK_TOKEN` variable with your _User OAuth Token_.
+
+> **Note:** The _User OAuth Token_ is specific to a user; each user wishing to use this application will need to install
+> it themselves
 
 ### Calendars
 
