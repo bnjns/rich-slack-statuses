@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '**.js'
+      - '**.ts'
+      - 'package.json'
+      - 'tsconfig.json'
   pull_request:
     branches:
       - main
