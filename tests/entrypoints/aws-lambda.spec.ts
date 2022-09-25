@@ -15,7 +15,7 @@ describe('the handler', () => {
 
   it('should call the execute function', async() => {
     expect.assertions(1)
-    mockExecute.mockImplementation(() => Promise.resolve())
+    mockExecute.mockImplementationOnce(() => Promise.resolve())
 
     await handler()
 
@@ -24,7 +24,7 @@ describe('the handler', () => {
 
   it('should pass errors back', async() => {
     expect.assertions(1)
-    mockExecute.mockImplementation(() => Promise.reject(new Error('Execution failed for some reason')))
+    mockExecute.mockImplementationOnce(() => Promise.reject(new Error('Execution failed for some reason')))
 
     const result = handler()
 
