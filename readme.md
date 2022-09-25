@@ -98,6 +98,12 @@ You can also watch for changes and automatically with:
 yarn test:watch
 ```
 
+View the current test coverage:
+
+```sh
+yarn test:coverage
+```
+
 ### Running manually
 
 You can run the application manually using
