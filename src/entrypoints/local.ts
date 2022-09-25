@@ -14,7 +14,7 @@ type ActionMap = Record<CommandAction, () => Promise<void>>
   const actionMap: ActionMap = {
     execute,
     'get-events': async() =>
-      getActiveEvents(process.argv.slice(3)[0] || getEnv('CALENDAR_ID'))
+      getActiveEvents(process.argv.slice(3)[0] || await getEnv('CALENDAR_ID'))
         .then(console.log),
     'clear-status': clearStatus,
     'set-status': async() =>
