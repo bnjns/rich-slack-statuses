@@ -18,7 +18,30 @@
 
 ## 🧐 About
 
-_TODO_
+For companies that use Slack for communication, your status is an extremely powerful tool to help let others know your
+availability and set expectations on how quickly you might reply. However, manually maintaining an accurate status in a
+busy working environment is practically impossible. While there are existing integrations for syncing your status to a
+calendar (eg, the Google Calendar app), these are quite limited as they do not let you customise your status.
+
+With Rich Slack Statuses, you can customise all aspects of your Slack status using a standard Calendar:
+
+- Status text
+- Status emoji
+- Do not disturb (aka snooze) setting
+- Presence (away/online) setting
+
+This works by finding all active events and parsing the title:
+
+- The status emoji is set by specifying the emoji name in the event summary, surrounded by `:` (eg, `:no_entry:`). If no
+  emoji is found, this defaults to `calendar`.
+- Enter the `[DND]` flag to enable Do Not Disturb (snooze). This will also automatically set the emoji to `:no_entry:`,
+  unless another emoji is explicitly provided.
+- Enter the `[AWAY]` flag to set the presence to `away`, otherwise the presence is set to `auto` which uses your
+  activity to mark you as online/away.
+- The event summary is used to set the status text, with any parsed info (eg, emoji, flags) removed.
+
+The active event is currently determined by finding all events that are currently occurring, and selecting the event
+which started last and then ends first.
 
 ## 🏁 Getting Started
 
@@ -99,6 +122,28 @@ with any of the following commands:
   yarn run:local set-status ':calendar: [DND] An example event'
   ```
 
+### Building
+
+To transpile the Typescript into CommonJS (will be written to `./dist`):
+
+```sh
+yarn build
+```
+
+To build this into a zip which includes all dependencies:
+
+```sh
+yarn build:lambda
+```
+
+You can also build this into an executable (eg, if you wish to run locally on a cron job):
+
+```sh
+yarn build:package
+```
+
+> This requires that you have [pkg](https://github.com/vercel/pkg) and a valid Node.js runtime installed.
+
 ## 🎈 Features
 
 ### Slack app
@@ -113,7 +158,7 @@ Workspace_. This may require administrator approval, depending on your workspace
 Once installed, you can configure the `SLACK_TOKEN` variable with your _User OAuth Token_.
 
 > **Note:** The _User OAuth Token_ is specific to a user; each user wishing to use this application will need to install
-> it themselves
+> it themselves.
 
 ### Calendars
 
@@ -134,13 +179,62 @@ Ensure you have a GCP service account which has read access to the desired calen
 
 The calendar can then be configured by setting the `CALENDAR_ID` environment variable.
 
+### Predefined configurations
+
+To make it easier to configure your status, this comes with a series of "predefined" configurations, which match on the
+event summary text (case-insensitive) to automatically set the emoji:
+
+| Text         |     Emoji     |
+|:-------------|:-------------:|
+| 1:1          |  `no_entry`   |
+| A/L          | `palm_tree `  |
+| Bank holiday | `palm_tree `  |
+| Focus time   |  `no_entry`   |
+| Interview    | `interview`\^ |
+| Jira         |   `jira2`\^   |
+| Out of hours |     `zzz`     |
+| Travelling   |     `car`     |
+
+^ This is a custom emoji
+
+> **Note:** You can still override the emoji by specifying it in the event summary.
+
 ## 🚀 Deploying
 
-_TODO_
+### Deploying in the cloud
+
+This application is designed to be deployed in a cloud serverless environment (eg, AWS Lambda) as a CommonJS module, and
+can simply be run using a CRON schedule (eg, every minute). You can build this into a zip using the included script:
+
+```sh
+yarn build:lambda
+```
+
+You can then configure the handler based on the deployment platform chosen:
+
+| Platform   | Handler                                                              |
+|:-----------|:---------------------------------------------------------------------|
+| AWS Lambda | `entrypoints/aws-lambda.default` or `entrypoints/aws-lambda.handler` |
+
+### Deploying locally
+
+If you do not wish to deploy to a cloud service you can also run this locally, using something like crontab. Simply
+configure the cron job to run `yarn run:local execute`, or use `yarn build:package` to build an executable.
+
+## 🎉 Roadmap
+
+- [x] Reading from Google Calendar
+- [ ] Ability to force override the selected event
+- [ ] Ability to set secrets from AWS SSM
+- [ ] Ability to set secrets from AWS Secrets Manager
 
 ## ⛏️ Built Using
 
-_TODO_
+- [Google Calendar API](https://github.com/googleapis/google-api-nodejs-client)
+- [Slack Web API](https://github.com/slackapi/node-slack-sdk)
+- [Luxon](https://github.com/moment/luxon)
+- [Winston](https://github.com/winstonjs/winston)
+- [pkg](https://github.com/vercel/pkg)
 
 ## ✍️ Authors
 
