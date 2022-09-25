@@ -68,26 +68,21 @@ yarn install
 
 ### Configuring
 
-#### Calendars
+There are 2 types of properties that can be configured:
 
-| Environment variable |  Type  | Required | Default  | Description                                                                        |
-|:---------------------|:------:|:--------:|:---------|:-----------------------------------------------------------------------------------|
-| `CALENDAR_TYPE`      | string |    N     | `google` | The type of calendar to determine the status from. Currently can only be `google`. |
-| `CALENDAR_ID`        | string |    Y     | N/A      | The ID of the calendar to determine the status from.                               |
+- **Normal:** Configured via environment variables; the value of the config property is the value of the environment
+  variable.
+- **Secret:** For sensitive values (eg, credentials). Instead of containing the value, the environment variable will
+  contain the location of the secret (eg, for AWS Secrets Manager it would contain the ARN of the secret).
+  See [Secrets](#secrets) for more details.
 
-#### Slack
-
-| Environment variable |  Type  | Required | Default | Description                                                                        |
-|:---------------------|:------:|:--------:|:--------|:-----------------------------------------------------------------------------------|
-| `SLACK_TOKEN`        | string |    Y     | N/A     | The _User OAuth Token_ of the [Slack app](#slack-app) installed on your workspace. |
-
-#### GCP service account
-
-| Environment variable |  Type  | Required | Default  | Description                                                                        |
-|:---------------------|:------:|:--------:|:---------|:-----------------------------------------------------------------------------------|
-| `GOOGLE_CREDENTIALS` |  JSON  |    N     | N/A      | The JSON credentials of the GCP service account, if reading from Google.           |
-
-Alternatively, you can place the JSON credentials in a `gcp-credentials.json` file, in the root of the app.
+| Config Property      |  Type  | Required | Default  | Description                                                                                                                  |
+|:---------------------|:------:|:--------:|:---------|:-----------------------------------------------------------------------------------------------------------------------------|
+| `SECRET_TYPE`        | Normal |    N     | `env`    | The system to use to resolve secrets. See [Secrets](#secrets).                                                               |
+| `CALENDAR_TYPE`      | Normal |    N     | `google` | The type of calendar to use to determine the status. See [Calendars](#calendars).                                            |
+| `CALENDAR_ID`        | Normal |    Y     | N/A      | The ID of the calendar to determine the status from.                                                                         |
+| `SLACK_TOKEN`        | Secret |    Y     | N/A      | The _User OAuth Token_ of the [Slack app](#slack-app) installed on your workspace.                                           |
+| `GOOGLE_CREDENTIALS` | Secret |    N     | N/A      | The JSON credentials of the GCP service account, if reading from Google. Alternatively, use the `gcp-credentials.json` file. |
 
 ### Running the tests
 
@@ -172,12 +167,20 @@ Select the desired calendar with the `CALENDAR_TYPE` environment variable (defau
 
 #### Google Calendar
 
-Ensure you have a GCP service account which has read access to the desired calendar:
+Ensure you have a GCP service account which has read access to the desired calendar, and set the JSON credentials in
+either the `GOOGLE_CREDENTIALS` secret or a `gcp-credentials.json` file.
 
 - _Settings and sharing_ > _Share with specific people_
 - Add the service account email with the _See all event details_ permission
 
 The calendar can then be configured by setting the `CALENDAR_ID` environment variable.
+
+### Secrets
+
+This app has different methods for retrieving secrets, such as the Slack token, depending on your desired config and
+deployment method; simply set the `SECRET_TYPE` environment variable to the desired method:
+
+- `env`: Use environment variables. The secret name is the environment variable name. Not recommended in production.
 
 ### Predefined configurations
 
