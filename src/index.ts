@@ -1,8 +1,8 @@
 import { getActiveEvents } from './calandars'
 import { getEnv } from './config'
-import { clearStatus } from './slack'
+import { clearStatus, setStatus } from './slack'
 import logger from './utils/logging'
-import { parseEvent } from './events'
+import { parseEvent, selectEvent } from './events'
 
 const execute = async(calendarId?: string): Promise<void> =>
   getActiveEvents(calendarId || getEnv('CALENDAR_ID'))
@@ -10,9 +10,8 @@ const execute = async(calendarId?: string): Promise<void> =>
       if (activeEvents.length > 0) {
         logger.debug('Parsing active events')
         return Promise.all(activeEvents.map(parseEvent))
-          .then(events => console.log(events))
-          // Select the event
-          // Update slack
+          .then(events => selectEvent(events))
+          .then(event => setStatus(event))
       } else {
         logger.info('There are no active events - clearing any existing Slack status')
         return clearStatus()
