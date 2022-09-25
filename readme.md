@@ -165,9 +165,7 @@ Once installed, you can configure the `SLACK_TOKEN` variable with your _User OAu
 
 This can currently read calendars from the following:
 
-| Type     | Details                             |
-|:---------|:------------------------------------|
-| `google` | [Google Calendar](#google-calendar) |
+- `google`: Google Calendar
 
 Select the desired calendar with the `CALENDAR_TYPE` environment variable (defaults to `google`).
 
