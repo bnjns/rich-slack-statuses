@@ -5,7 +5,7 @@ import logger from './utils/logging'
 import { parseEvent, selectEvent } from './events'
 
 const execute = async(calendarId?: string): Promise<void> =>
-  getActiveEvents(calendarId || getEnv('CALENDAR_ID'))
+  getActiveEvents(calendarId || await getEnv('CALENDAR_ID'))
     .then(activeEvents => {
       if (activeEvents.length > 0) {
         logger.debug('Parsing active events')

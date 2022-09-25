@@ -7,7 +7,6 @@ interface CalendarEvent {
   end: DateTime
 }
 
+export type CalendarType = 'google'
 export type CalendarFn = (date: DateTime, calendarId: string) => Promise<CalendarEvent[]>
-interface CalendarTypeMap {
-  [key: string]: CalendarFn
-}
+export type CalendarTypeMap = Record<CalendarType, CalendarFn>

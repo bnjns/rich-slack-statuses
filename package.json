@@ -10,10 +10,11 @@
     "build": "scripts/build.sh",
     "build:lambda": "scripts/build.sh --lambda",
     "build:package": "scripts/build.sh --package",
-    "lint": "npx eslint './src/**/*.ts'",
+    "lint": "eslint './src/**/*.ts'",
     "run:local": "NODE_ENV=development ts-node src/entrypoints/local.ts",
-    "test": "npx jest",
-    "test:watch": "npx jest --watch --all"
+    "test": "jest",
+    "test:watch": "jest --watchAll --all",
+    "test:coverage": "jest --coverage"
   },
   "devDependencies": {
     "@types/jest": "^29.0.3",
