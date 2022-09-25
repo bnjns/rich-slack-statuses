@@ -2,7 +2,7 @@ import { ParsedEvent } from './types'
 import logger from '../utils/logging'
 
 export const sortByMostRecent = (events: ParsedEvent[]): ParsedEvent[] =>
-  events.sort((a, b) => {
+  [...events].sort((a, b) => {
     const aStart = a.start.toMillis()
     const bStart = b.start.toMillis()
 
