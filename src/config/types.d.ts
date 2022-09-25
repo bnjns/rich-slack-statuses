@@ -1,3 +1,3 @@
-export type ConfigType = 'env'
-export type ConfigFn = (name: string, defaultValue?: string) => Promise<string>
-export type ConfigTypeMap = Record<ConfigType, ConfigFn>
+export type SecretType = 'env'
+export type SecretFn = (name: string, defaultValue?: string) => Promise<string>
+export type SecretTypeMap = Record<SecretType, SecretFn>
