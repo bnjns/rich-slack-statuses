@@ -15,10 +15,11 @@ describe('getting the credentials', () => {
     process.env = { ...OLD_ENV }
   })
 
-  it('should set the keyFile attribute if a credentials file exists', () => {
+  it('should set the keyFile attribute if a credentials file exists', async() => {
+    expect.assertions(2)
     fs.writeFileSync(CREDENTIALS_PATH, JSON.stringify(exampleCredentials))
 
-    const auth = getCredentials()
+    const auth = await getCredentials()
     expect(auth.credentials).toBeUndefined()
     expect(auth.keyFile).toBeTruthy()
 
@@ -26,16 +27,19 @@ describe('getting the credentials', () => {
   })
 
 
-  it('should set the credentials attribute if the environment variable exists', () => {
+  it('should set the credentials attribute if the environment variable exists', async() => {
+    expect.assertions(2)
     process.env.GOOGLE_CREDENTIALS = JSON.stringify(exampleCredentials)
 
-    const auth = getCredentials()
+    const auth = await getCredentials()
     expect(auth.credentials).toBeTruthy()
     expect(auth.keyFile).toBeUndefined()
 
     process.env = OLD_ENV
   })
-  it('should throw an error if unable to configure', () => {
-    expect(getCredentials).toThrow("Cannot authenticate with Google")
+  it('should return a rejected promise if unable to configure', async() => {
+    expect.assertions(1)
+
+    await expect(getCredentials()).rejects.toThrowError('Cannot authenticate with Google')
   })
 })

@@ -1,16 +1,28 @@
+/* eslint-disable camelcase */
 import { DateTime } from 'luxon'
-import { client } from '../../src/slack/client'
 import { handleDoNotDisturb } from '../../src/slack/dnd'
 import { errorText, failedPromise, successPromise } from './fixtures'
 
-jest.mock('../../src/slack/client', () => ({
-  ...(jest.requireActual('../../src/slack/client'))
-}))
-const mockedClient = client as jest.Mocked<typeof client>
+const mockSetSnooze = jest.fn()
+const mockEndSnooze = jest.fn()
+jest.mock('@slack/web-api', () => {
+  return {
+    WebClient: jest.fn().mockImplementation(() => {
+      return {
+        dnd: {
+          setSnooze: mockSetSnooze,
+          endSnooze: mockEndSnooze
+        }
+      }
+    })
+  }
+})
 
 describe('setting the do not disturb', () => {
   beforeEach(() => {
     jest.resetModules()
+    mockSetSnooze.mockClear()
+    mockEndSnooze.mockClear()
   })
 
   const start = DateTime.fromISO('2022-09-01T01:15:00Z')
@@ -19,39 +31,31 @@ describe('setting the do not disturb', () => {
 
   it('should set snooze with the expected duration when enable is true', async() => {
     expect.assertions(2)
-
-    const mockedSetSnooze = jest.fn().mockImplementation(successPromise)
-    mockedClient.dnd.setSnooze = mockedSetSnooze
+    mockSetSnooze.mockImplementationOnce(successPromise)
 
     await handleDoNotDisturb({ enable: true, start, end })
-    expect(mockedSetSnooze).toHaveBeenCalledTimes(1)
-    // eslint-disable-next-line camelcase
-    expect(mockedSetSnooze).toHaveBeenCalledWith({ num_minutes: diffMinutes })
+
+    expect(mockSetSnooze).toHaveBeenCalledTimes(1)
+    expect(mockSetSnooze).toHaveBeenCalledWith({ num_minutes: diffMinutes })
   })
   it('should handle errors when setting snooze', async() => {
     expect.assertions(1)
-
-    const mockedSetSnooze = jest.fn().mockImplementation(failedPromise)
-    mockedClient.dnd.setSnooze = mockedSetSnooze
+    mockSetSnooze.mockImplementationOnce(failedPromise)
 
     await expect(handleDoNotDisturb({ enable: true, start, end })).rejects.toEqual(new Error(errorText))
   })
 
   it('should end snooze when enable is false', async() => {
     expect.assertions(1)
-
-    const mockedEndSnooze = jest.fn().mockImplementation(successPromise)
-    mockedClient.dnd.endSnooze = mockedEndSnooze
+    mockEndSnooze.mockImplementationOnce(successPromise)
 
     await handleDoNotDisturb({ enable: false, start, end })
 
-    expect(mockedEndSnooze).toHaveBeenCalledTimes(1)
+    expect(mockEndSnooze).toHaveBeenCalledTimes(1)
   })
   it('should handle errors when ending snooze', async() => {
     expect.assertions(1)
-
-    const mockedEndSnooze = jest.fn().mockImplementation(failedPromise)
-    mockedClient.dnd.endSnooze = mockedEndSnooze
+    mockEndSnooze.mockImplementationOnce(failedPromise)
 
     await expect(handleDoNotDisturb({ enable: false, start, end })).rejects.toEqual(new Error('An example error'))
   })

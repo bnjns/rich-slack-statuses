@@ -1,8 +1,7 @@
 /* eslint-disable camelcase */
 import { DateTime } from 'luxon'
 import { buildProfile, handleStatus } from '../../src/slack/status'
-import { client } from '../../src/slack/client'
-import { failedPromise, nonOkPromise, successPromise } from './fixtures'
+import { failedPromise, successPromise } from './fixtures'
 
 describe('building the profile', () => {
   it('providing no status should set the text to null', () => {
@@ -79,19 +78,31 @@ describe('building the profile', () => {
 })
 
 
-jest.mock('../../src/slack/client', () => ({
-  ...(jest.requireActual('../../src/slack/client'))
-}))
-const mockedClient = client as jest.Mocked<typeof client>
+const mockSetProfile = jest.fn()
+jest.mock('@slack/web-api', () => {
+  return {
+    WebClient: jest.fn().mockImplementation(() => {
+      return {
+        users: {
+          profile: {
+            set: mockSetProfile
+          }
+        }
+      }
+    })
+  }
+})
 
 describe('handling a status change', () => {
   beforeEach(() => {
     jest.resetModules()
+    mockSetProfile.mockClear()
   })
 
   it('no status to update should clear the status', async() => {
-    const mockedSet = jest.fn().mockImplementation(successPromise)
-    mockedClient.users.profile.set = mockedSet
+    expect.assertions(2)
+
+    mockSetProfile.mockImplementationOnce(successPromise)
     const expectedProfile = JSON.stringify({
       status_text: null,
       status_emoji: null,
@@ -100,13 +111,14 @@ describe('handling a status change', () => {
 
     await handleStatus()
 
-    expect(mockedSet).toHaveBeenCalledTimes(1)
-    expect(mockedSet).toHaveBeenCalledWith({ profile: expectedProfile })
+    expect(mockSetProfile).toHaveBeenCalledTimes(1)
+    expect(mockSetProfile).toHaveBeenCalledWith({ profile: expectedProfile })
   })
 
   it('providing a status to update should call the API with that status', async() => {
-    const mockedSet = jest.fn().mockImplementation(successPromise)
-    mockedClient.users.profile.set = mockedSet
+    expect.assertions(2)
+
+    mockSetProfile.mockImplementation(successPromise)
     const expectedProfile = JSON.stringify({
       status_text: 'status',
       status_emoji: ':emoji:',
@@ -119,15 +131,14 @@ describe('handling a status change', () => {
       expire: DateTime.fromISO("2022-09-01T10:45:00Z")
     })
 
-    expect(mockedSet).toHaveBeenCalledTimes(1)
-    expect(mockedSet).toHaveBeenCalledWith({ profile: expectedProfile })
+    expect(mockSetProfile).toHaveBeenCalledTimes(1)
+    expect(mockSetProfile).toHaveBeenCalledWith({ profile: expectedProfile })
   })
 
   it('a request to slack which throws an error should be handled', async() => {
     expect.assertions(1)
 
-    const mockedSet = jest.fn().mockImplementation(failedPromise)
-    mockedClient.users.profile.set = mockedSet
+    mockSetProfile.mockImplementationOnce(failedPromise)
 
     await expect(handleStatus()).rejects.toEqual(new Error('An example error'))
   })

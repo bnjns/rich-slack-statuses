@@ -1,14 +1,40 @@
-import { callWebApi, client, WebApiFunction } from '../../src/slack/client'
+import { callWebApi, getClient, WebApiFunction } from '../../src/slack/client'
 import { errorText, failedPromise, nonOkPromise, successPromise } from './fixtures'
 
-jest.mock('../../src/slack/client', () => ({
-  ...(jest.requireActual('../../src/slack/client'))
-}))
-const mockedClient = client as jest.Mocked<typeof client>
+const mockUserList = jest.fn()
+const mockGetSecret = jest.fn()
+jest.mock('@slack/web-api', () => {
+  return {
+    WebClient: jest.fn().mockImplementation((token?: string) => {
+      return {
+        token,
+        users: {
+          list: mockUserList
+        }
+      }
+    })
+  }
+})
+jest.mock('../../src/config', () => {
+  return {
+    getSecret: jest.fn().mockImplementation(() => mockGetSecret())
+  }
+})
 
-describe('the slack web client', () => {
-  it('should be configured with the correct token', () => {
-    expect(client.token).toEqual('FAKE')
+describe('getting the slack client', () => {
+  beforeEach(() => {
+    jest.resetModules()
+    mockGetSecret.mockClear()
+  })
+
+  it('should be given the correct slack token', async() => {
+    expect.assertions(2)
+    mockGetSecret.mockReturnValue('MOCKED_TOKEN')
+
+    const client = await getClient()
+
+    expect(mockGetSecret).toHaveBeenCalledTimes(1)
+    expect(client.token).toEqual('MOCKED_TOKEN')
   })
 })
 
@@ -17,13 +43,14 @@ describe('calling the web api with a function', () => {
 
   beforeEach(() => {
     jest.resetModules()
+    mockUserList.mockClear()
   })
 
   it('should call the function', async() => {
     expect.assertions(1)
-    const fn = jest.fn().mockImplementation(client => client.users.list())
-    mockedClient.users.list = jest.fn().mockImplementation(successPromise)
+    mockUserList.mockImplementationOnce(successPromise)
 
+    const fn = jest.fn().mockImplementation(client => client.users.list())
     await callWebApi(fn)
 
     await expect(fn).toHaveBeenCalledTimes(1)
@@ -31,7 +58,7 @@ describe('calling the web api with a function', () => {
 
   it('should resolve if the client returns success', async() => {
     expect.assertions(1)
-    mockedClient.users.list = jest.fn().mockImplementation(successPromise)
+    mockUserList.mockImplementationOnce(successPromise)
 
     const result = callWebApi(fn)
 
@@ -40,7 +67,7 @@ describe('calling the web api with a function', () => {
 
   it('should reject if the client returns an error', async() => {
     expect.assertions(1)
-    mockedClient.users.list = jest.fn().mockImplementation(failedPromise)
+    mockUserList.mockImplementationOnce(failedPromise)
 
     const result = callWebApi(fn)
 
@@ -49,7 +76,7 @@ describe('calling the web api with a function', () => {
 
   it('should reject if the client succeeds but with a non-ok result', async() => {
     expect.assertions(1)
-    mockedClient.users.list = jest.fn().mockImplementation(nonOkPromise)
+    mockUserList.mockImplementationOnce(nonOkPromise)
 
     const result = callWebApi(fn)
 
