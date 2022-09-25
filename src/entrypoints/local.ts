@@ -1,9 +1,9 @@
-import execute from './index'
-import { clearStatus, setStatus } from './slack'
+import execute from '../execute'
+import { clearStatus, setStatus } from '../slack'
 import { DateTime } from 'luxon'
-import { parseEvent } from './events'
-import { getActiveEvents } from './calandars'
-import { getEnv } from './config'
+import { parseEvent } from '../events'
+import { getActiveEvents } from '../calandars'
+import { getEnv } from '../config'
 
 type CommandAction = 'execute' | 'clear-status' | 'set-status' | 'get-events'
 type ActionMap = Record<CommandAction, () => Promise<void>>
