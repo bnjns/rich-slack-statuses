@@ -186,8 +186,10 @@ This app has different methods for retrieving secrets, such as the Slack token, 
 deployment method; simply set the `SECRET_TYPE` environment variable to the desired method:
 
 - `env`: Use environment variables. The secret value is the environment variable name. Not recommended in production.
-- `aws-ssm`: Use AWS Systems Manager Parameter Store to store secrets. The name of the parameter should be in the
-  environment variable name. 
+- `aws-ssm`: Use AWS Systems Manager Parameter Store to store secrets. The environment variable should contain the
+  parameter name.
+- `aws-secrets`: Use AWS Secrets Manager to store secrets. The environment variable can contain either the name or ARN
+  of the secret.
 
 ### Predefined configurations
 
