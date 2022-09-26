@@ -233,13 +233,6 @@ You can then configure the handler based on the deployment platform chosen:
 If you do not wish to deploy to a cloud service you can also run this locally, using something like crontab. Simply
 configure the cron job to run `yarn run:local execute`, or use `yarn build:package` to build an executable.
 
-## 🎉 Roadmap
-
-- [x] Reading from Google Calendar
-- [ ] Ability to force override the selected event
-- [ ] Ability to set secrets from AWS SSM
-- [ ] Ability to set secrets from AWS Secrets Manager
-
 ## ⛏️ Built Using
 
 - [Google Calendar API](https://github.com/googleapis/google-api-nodejs-client)
