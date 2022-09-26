@@ -184,7 +184,9 @@ The calendar can then be configured by setting the `CALENDAR_ID` environment var
 This app has different methods for retrieving secrets, such as the Slack token, depending on your desired config and
 deployment method; simply set the `SECRET_TYPE` environment variable to the desired method:
 
-- `env`: Use environment variables. The secret name is the environment variable name. Not recommended in production.
+- `env`: Use environment variables. The secret value is the environment variable name. Not recommended in production.
+- `aws-ssm`: Use AWS Systems Manager Parameter Store to store secrets. The name of the parameter should be in the
+  environment variable name. 
 
 ### Predefined configurations
 
