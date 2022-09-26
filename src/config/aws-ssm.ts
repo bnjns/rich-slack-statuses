@@ -4,11 +4,6 @@ import logger from '../utils/logging'
 import getEnv from './env'
 import { getCredentialProvider } from './aws'
 
-// TODO: test fetches correct parameter and has WithDecryption
-// TODO: test uses default if parameter has no value
-// TODO: test returns rejected promise if no default and no parameter value
-// TODO: test uses default if ParameterNotFound
-// TODO: test returns rejected promise on error
 const getParameter:SecretFn = async(name, defaultValue): Promise<string> => {
   const parameterName = await getEnv(name)
 

@@ -13,7 +13,8 @@
     "lint": "eslint './src/**/*.ts'",
     "run:local": "NODE_ENV=development ts-node src/entrypoints/local.ts",
     "test": "jest",
-    "test:watch": "jest --watchAll --all",
+    "test:watch": "jest --watch --all",
+    "test:watch:all": "jest --watchAll --all",
     "test:coverage": "jest --coverage"
   },
   "devDependencies": {
