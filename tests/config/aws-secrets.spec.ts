@@ -19,6 +19,7 @@ import getSecret from '../../src/config/aws-secrets'
 describe('getting a secret from AWS Secrets Manager', () => {
   afterEach(() => {
     jest.resetModules()
+    mockGetEnv.mockClear()
     mockGetSecretValue.mockClear()
   })
 
