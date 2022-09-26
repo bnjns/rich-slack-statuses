@@ -19,6 +19,7 @@ import getParameter from '../../src/config/aws-ssm'
 describe('getting a parameter from AWS SSM', () => {
   afterEach(() => {
     jest.resetModules()
+    mockGetEnv.mockClear()
     mockGetParameter.mockClear()
   })
 

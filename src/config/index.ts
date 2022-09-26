@@ -1,11 +1,13 @@
 import { SecretFn, SecretType, SecretTypeMap } from './types'
 import logger from '../utils/logging'
 import getEnvVariable from './env'
-import getParameter from './aws-ssm'
+import getAwsParameter from './aws-ssm'
+import getAwsSecret from './aws-secrets'
 
 const secretTypeMap: SecretTypeMap = {
-  env:  getEnvVariable,
-  'aws-ssm': getParameter
+  'aws-ssm': getAwsParameter,
+  'aws-secrets': getAwsSecret,
+  env:  getEnvVariable
 }
 
 export const selectSecretMethod = async(): Promise<SecretFn> => {
