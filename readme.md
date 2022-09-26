@@ -76,13 +76,14 @@ There are 2 types of properties that can be configured:
   contain the location of the secret (eg, for AWS Secrets Manager it would contain the ARN of the secret).
   See [Secrets](#secrets) for more details.
 
-| Config Property      |  Type  | Required | Default  | Description                                                                                                                  |
-|:---------------------|:------:|:--------:|:---------|:-----------------------------------------------------------------------------------------------------------------------------|
-| `SECRET_TYPE`        | Normal |    N     | `env`    | The system to use to resolve secrets. See [Secrets](#secrets).                                                               |
-| `CALENDAR_TYPE`      | Normal |    N     | `google` | The type of calendar to use to determine the status. See [Calendars](#calendars).                                            |
-| `CALENDAR_ID`        | Normal |    Y     | N/A      | The ID of the calendar to determine the status from.                                                                         |
-| `SLACK_TOKEN`        | Secret |    Y     | N/A      | The _User OAuth Token_ of the [Slack app](#slack-app) installed on your workspace.                                           |
-| `GOOGLE_CREDENTIALS` | Secret |    N     | N/A      | The JSON credentials of the GCP service account, if reading from Google. Alternatively, use the `gcp-credentials.json` file. |
+| Config Property      |  Type  | Required | Default     | Description                                                                                                                  |
+|:---------------------|:------:|:--------:|:------------|:-----------------------------------------------------------------------------------------------------------------------------|
+| `SECRET_TYPE`        | Normal |    N     | `env`       | The system to use to resolve secrets. See [Secrets](#secrets).                                                               |
+| `CALENDAR_TYPE`      | Normal |    N     | `google`    | The type of calendar to use to determine the status. See [Calendars](#calendars).                                            |
+| `CALENDAR_ID`        | Normal |    Y     | N/A         | The ID of the calendar to determine the status from.                                                                         |
+| `SLACK_TOKEN`        | Secret |    Y     | N/A         | The _User OAuth Token_ of the [Slack app](#slack-app) installed on your workspace.                                           |
+| `GOOGLE_CREDENTIALS` | Secret |    N     | N/A         | The JSON credentials of the GCP service account, if reading from Google. Alternatively, use the `gcp-credentials.json` file. |
+| `AWS_REGION`         | Normal |    N     | `eu-west-1` | If using an AWS system for storing secrets, use this to configure the region the client is configured in.                    |
 
 ### Running the tests
 
