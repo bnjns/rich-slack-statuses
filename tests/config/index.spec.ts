@@ -1,5 +1,6 @@
 import { selectSecretMethod } from '../../src/config'
 import getEnvVariable from '../../src/config/env'
+import getParameter from '../../src/config/aws-ssm'
 
 describe('selecting the secret method', () => {
   const OLD_ENV = { ...process.env }
@@ -20,11 +21,11 @@ describe('selecting the secret method', () => {
 
   it('should return the secret fn when a valid type is provided', async() => {
     expect.assertions(1)
-    process.env.SECRET_TYPE = 'env'
+    process.env.SECRET_TYPE = 'aws-ssm'
 
     const result = selectSecretMethod()
 
-    await expect(result).resolves.toBe(getEnvVariable)
+    await expect(result).resolves.toBe(getParameter)
   })
 
   it('should return the env secret fn when no secret type is provided', async() => {
