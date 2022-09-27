@@ -41,7 +41,7 @@ This works by finding all active events and parsing the title:
 - The event summary is used to set the status text, with any parsed info (eg, emoji, flags) removed.
 
 The active event is currently determined by finding all events that are currently occurring, and selecting the event
-which started last and then ends first.
+which started last and then ends first. If you wish to override the selected event, prefix the summary with `!`.
 
 ## 🏁 Getting Started
 

@@ -66,6 +66,16 @@ export const detectEmoji = (event: CalendarEvent, flags: string[]): string => {
   return DEFAULT_EMOJI
 }
 
+export const detectPrioritisation = (event: CalendarEvent): boolean => {
+  const prioritise = event.title.charAt(0) === '!'
+
+  if (prioritise) {
+    event.title = event.title.substring(1, event.title.length)
+  }
+
+  return prioritise
+}
+
 const parseEvent = async(event: CalendarEvent): Promise<ParsedEvent> => {
   try {
     const copiedEvent = { ...event }
@@ -74,6 +84,7 @@ const parseEvent = async(event: CalendarEvent): Promise<ParsedEvent> => {
     const isDoNotDisturb = detectDoNotDisturb(copiedEvent, flags)
     const isAway = detectAway(copiedEvent, flags)
     const emoji = detectEmoji(copiedEvent, flags)
+    const prioritise = detectPrioritisation(copiedEvent)
 
     logger.debug(`Event title has been changed from '${event.title}' to '${copiedEvent.title}'`)
 
@@ -83,7 +94,8 @@ const parseEvent = async(event: CalendarEvent): Promise<ParsedEvent> => {
       end: copiedEvent.end,
       emoji: emoji,
       setDoNotDisturb: isDoNotDisturb,
-      setAway: isAway
+      setAway: isAway,
+      prioritise
     })
   } catch (err) {
     return Promise.reject(err)

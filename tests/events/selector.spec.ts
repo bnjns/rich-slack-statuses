@@ -2,10 +2,11 @@ import { ParsedEvent } from '../../src/events/types'
 import { DateTime } from 'luxon'
 import selectEvent, { sortByMostRecent } from '../../src/events/selector'
 
-const baseEvent: Pick<ParsedEvent, 'emoji' | 'setDoNotDisturb' | 'setAway'> = {
+const baseEvent: Pick<ParsedEvent, 'emoji' | 'setDoNotDisturb' | 'setAway' | 'prioritise'> = {
   emoji: 'calendar',
   setDoNotDisturb: false,
-  setAway: false
+  setAway: false,
+  prioritise: false
 }
 
 describe('sorting events', () => {
@@ -122,6 +123,63 @@ describe('selecting an event', () => {
         title: 'Event 2',
         start: DateTime.fromISO('2022-09-01T00:00:00Z'),
         end: DateTime.fromISO('2022-09-02T00:00:00Z')
+      }
+    ]
+
+    const event = selectEvent(events)
+
+    expect(event.title).toEqual('Event 1')
+  })
+
+  it('should select the prioritised event', () => {
+    const events: ParsedEvent[] = [
+      {
+        ...baseEvent,
+        title: 'Event 1',
+        start: DateTime.fromISO('2022-09-01T09:00:00Z'),
+        end: DateTime.fromISO('2022-09-01T12:00:00Z')
+      },
+      {
+        ...baseEvent,
+        title: 'Event 2',
+        start: DateTime.fromISO('2022-09-01T00:00:00Z'),
+        end: DateTime.fromISO('2022-09-02T00:00:00Z')
+      },
+      {
+        ...baseEvent,
+        title: 'Event 3',
+        start: DateTime.fromISO('2022-09-01T02:00:00Z'),
+        end: DateTime.fromISO('2022-09-02T20:00:00Z'),
+        prioritise: true
+      }
+    ]
+
+    const event = selectEvent(events)
+
+    expect(event.title).toEqual('Event 3')
+  })
+
+  it('should select the event that starts the latest if multiple are prioritised', () => {
+    const events: ParsedEvent[] = [
+      {
+        ...baseEvent,
+        title: 'Event 1',
+        start: DateTime.fromISO('2022-09-01T09:00:00Z'),
+        end: DateTime.fromISO('2022-09-01T12:00:00Z'),
+        prioritise: true
+      },
+      {
+        ...baseEvent,
+        title: 'Event 2',
+        start: DateTime.fromISO('2022-09-01T00:00:00Z'),
+        end: DateTime.fromISO('2022-09-02T00:00:00Z')
+      },
+      {
+        ...baseEvent,
+        title: 'Event 3',
+        start: DateTime.fromISO('2022-09-01T02:00:00Z'),
+        end: DateTime.fromISO('2022-09-02T20:00:00Z'),
+        prioritise: true
       }
     ]
 
