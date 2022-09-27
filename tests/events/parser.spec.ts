@@ -4,10 +4,11 @@ import parseEvent, {
   DEFAULT_EMOJI,
   detectAway,
   detectDoNotDisturb,
-  detectEmoji,
+  detectEmoji, detectPrioritisation,
   DND_EMOJI,
   PREDEFINED_EMOJIS
 } from '../../src/events/parser'
+import parser from '../../src/events/parser'
 
 const baseEvent: CalendarEvent = {
   title: 'The event title',
@@ -309,6 +310,41 @@ describe('detecting the emoji', () => {
   })
 })
 
+describe('detecting prioritisation', () => {
+  it('should return false if no ! is present', () => {
+    const event = { ...baseEvent }
+
+    const prioritised = detectPrioritisation(event)
+
+    expect(prioritised).toBeFalsy()
+    expect(event.title).toEqual(baseEvent.title)
+  })
+
+  it('should return true if prefixed with ! and remove the prefix from the title', () => {
+    const event = {
+      ...baseEvent,
+      title: `!Event title`
+    }
+
+    const prioritised = detectPrioritisation(event)
+
+    expect(prioritised).toBeTruthy()
+    expect(event.title).toEqual('Event title')
+  })
+
+  it('should return false if ! is not first', () => {
+    const event = {
+      ...baseEvent,
+      title: 'Event ! title'
+    }
+
+    const prioritised = detectPrioritisation(event)
+
+    expect(prioritised).toBeFalsy()
+    expect(event.title).toEqual('Event ! title')
+  })
+})
+
 describe('parsing an event', () => {
   const baseEvent: CalendarEvent = {
     title: 'The event title',
@@ -358,5 +394,17 @@ describe('parsing an event', () => {
     const parsedEvent = await parseEvent(event)
 
     expect(parsedEvent.emoji).toEqual('emoji')
+  })
+
+  it('should detect prioritised events', async() => {
+    const event: CalendarEvent = {
+      ...baseEvent,
+      title: '!Prioritised event'
+    }
+
+    const parsedEvent = await parseEvent(event)
+
+    expect(parsedEvent.prioritise).toBeTruthy()
+    expect(parsedEvent.title).toEqual('Prioritised event')
   })
 })

@@ -16,11 +16,18 @@ export const sortByMostRecent = (events: ParsedEvent[]): ParsedEvent[] =>
 const selectEvent = (events: ParsedEvent[]): ParsedEvent => {
   events = sortByMostRecent(events)
 
-  // For now, just select the first event
-  const selected = events[0]
+  // Find the first prioritised event
+  const prioritised = events.filter(event => event.prioritise)
+  if (prioritised.length > 0) {
+    return prioritised[0]
+  }
 
+  // Fall back to the first event
+  return events[0]
+}
+
+export default function(events: ParsedEvent[]): ParsedEvent {
+  const selected = selectEvent(events)
   logger.info(`Selected event: ${JSON.stringify(selected)}`)
   return selected
 }
-
-export default selectEvent

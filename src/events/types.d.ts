@@ -7,4 +7,5 @@ export interface ParsedEvent {
   end: DateTime
   setDoNotDisturb: boolean
   setAway: boolean
+  prioritise: boolean
 }
