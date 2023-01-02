@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.2.5",
-    "@types/luxon": "^3.0.1",
+    "@types/luxon": "^3.2.0",
     "@types/node": "^16.0.0",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "eslint": "8.28.0",
@@ -42,7 +42,7 @@
     "@google-cloud/local-auth": "^2.1.1",
     "@slack/web-api": "^6.8.0",
     "googleapis": "^108.0.0",
-    "luxon": "^3.0.4",
+    "luxon": "^3.2.0",
     "winston": "^3.8.2"
   },
   "jestSonar": {
