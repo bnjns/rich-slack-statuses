@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  [![Status](https://img.shields.io/github/workflow/status/bnjns/rich-slack-statuses/test/main?style=flat-square)](https://github.com/bnjns/rich-slack-statuses/actions/workflows/test.yml) 
+  [![Status](https://img.shields.io/github/actions/workflow/status/bnjns/rich-slack-statuses/test.yml?branch=main&style=flat-square)](https://github.com/bnjns/rich-slack-statuses/actions/workflows/test.yml) 
   [![GitHub Issues](https://img.shields.io/github/issues/bnjns/rich-slack-statuses?style=flat-square)](https://github.com/bnjns/rich-slack-statuses/issues)
   [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/bnjns/rich-slack-statuses?style=flat-square)](https://github.com/bnjns/rich-slack-statuses/pulls)
   [![License](https://img.shields.io/github/license/bnjns/rich-slack-statuses?style=flat-square)](/license.txt)
