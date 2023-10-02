@@ -27,8 +27,8 @@ export const getEvents: CalendarFn = async(date: DateTime, calendarId: string): 
     maxResults: 10,
     orderBy: 'startTime',
     singleEvents: true,
-    timeMin,
-    timeMax
+    timeMin: timeMin || undefined,
+    timeMax: timeMax || undefined
   })
     .then(response => (response.data.items || []).filter(event => event.status !== 'cancelled'))
     .then(events => events.map(mapEvent))
