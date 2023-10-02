@@ -28,11 +28,8 @@ export const getCredentials = async(): Promise<Pick<Auth.GoogleAuthOptions, 'key
 }
 
 export const getAuthClient = async() => getCredentials()
-  .then(credentials => {
-    const auth = new Auth.GoogleAuth({
-      scopes: SCOPES,
-      ...credentials
-    })
-    return auth.getClient()
-  })
+  .then(credentials => new Auth.GoogleAuth({
+    scopes: SCOPES,
+    ...credentials
+  }))
 
