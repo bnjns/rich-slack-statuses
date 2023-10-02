@@ -113,15 +113,15 @@
     "@smithy/util-utf8" "^2.0.0"
     tslib "^2.5.0"
 
-"@aws-sdk/client-secrets-manager@^3.418.0":
-  version "3.418.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/client-secrets-manager/-/client-secrets-manager-3.418.0.tgz#d1b2abd99bc578206d7b04d338ec6c99b347f4fa"
-  integrity sha512-mfRfkjFrWoa6DBP10gWJ6p12L/6dQq7/bfTgH8qCgRjvk/0vF5MGgHfYV6ZIwB+eKXVTiY8Dv//FtmPs67rLkQ==
+"@aws-sdk/client-secrets-manager@^3.421.0":
+  version "3.421.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/client-secrets-manager/-/client-secrets-manager-3.421.0.tgz#f836505d5c8ecdfdc0447c88e2a5a1b1c99ea906"
+  integrity sha512-uwoSstFm+A60f2/CuIDHqTJdYm4hPMNCzkI3J/pKoD4A6suLIoJ9lEKGV3fdeL456vir4RTwiJG6Llzo+zI+nA==
   dependencies:
     "@aws-crypto/sha256-browser" "3.0.0"
     "@aws-crypto/sha256-js" "3.0.0"
-    "@aws-sdk/client-sts" "3.418.0"
-    "@aws-sdk/credential-provider-node" "3.418.0"
+    "@aws-sdk/client-sts" "3.421.0"
+    "@aws-sdk/credential-provider-node" "3.421.0"
     "@aws-sdk/middleware-host-header" "3.418.0"
     "@aws-sdk/middleware-logger" "3.418.0"
     "@aws-sdk/middleware-recursion-detection" "3.418.0"
