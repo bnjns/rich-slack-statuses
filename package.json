@@ -18,7 +18,7 @@
     "test:coverage": "jest --coverage"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.4",
+    "@types/jest": "^29.5.5",
     "@types/luxon": "^3.2.0",
     "@types/node": "^20.8.0",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
@@ -28,7 +28,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-standard": "^5.0.0",
-    "jest": "^29.6.4",
+    "jest": "^29.7.0",
     "jest-junit": "^16.0.0",
     "jest-sonar-reporter": "^2.0.0",
     "ts-jest": "^29.1.1",
