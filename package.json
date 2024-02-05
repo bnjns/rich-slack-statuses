@@ -18,7 +18,7 @@
     "test:coverage": "jest --coverage"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.11",
+    "@types/jest": "^29.5.12",
     "@types/luxon": "^3.4.2",
     "@types/node": "^20.11.10",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
