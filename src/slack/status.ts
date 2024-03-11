@@ -8,7 +8,7 @@ interface StatusParams {
   expire?: DateTime
 }
 
-export const buildProfile = (params?: StatusParams): string => JSON.stringify({
+export const buildProfile = (params?: StatusParams) => ({
   'status_text': params?.status || null,
   'status_emoji': params?.emoji ? `:${params.emoji}:` : null,
   'status_expiration': params?.expire ? params.expire.toUTC().toSeconds() : null
