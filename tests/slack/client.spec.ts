@@ -39,7 +39,7 @@ describe('getting the slack client', () => {
 })
 
 describe('calling the web api with a function', () => {
-  const fn: WebApiFunction = async(client) => client.users.list()
+  const fn: WebApiFunction = async(client) => client.users.list({})
 
   beforeEach(() => {
     jest.resetModules()

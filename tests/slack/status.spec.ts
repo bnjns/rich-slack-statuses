@@ -7,7 +7,7 @@ describe('building the profile', () => {
   it('providing no status should set the text to null', () => {
     const profile = buildProfile()
 
-    expect(JSON.parse(profile)).toMatchObject({
+    expect(profile).toMatchObject({
       status_text: null
     })
   })
@@ -16,7 +16,7 @@ describe('building the profile', () => {
       status: ''
     })
 
-    expect(JSON.parse(profile)).toMatchObject({
+    expect(profile).toMatchObject({
       status_text:null
     })
   })
@@ -25,7 +25,7 @@ describe('building the profile', () => {
       status: 'In a meeting'
     })
 
-    expect(JSON.parse(profile)).toMatchObject({
+    expect(profile).toMatchObject({
       status_text: 'In a meeting'
     })
   })
@@ -33,7 +33,7 @@ describe('building the profile', () => {
   it('providing no emoji should set the emoji to null', () => {
     const profile = buildProfile()
 
-    expect(JSON.parse(profile)).toMatchObject({
+    expect(profile).toMatchObject({
       status_emoji: null
     })
   })
@@ -42,7 +42,7 @@ describe('building the profile', () => {
       emoji: ''
     })
 
-    expect(JSON.parse(profile)).toMatchObject({
+    expect(profile).toMatchObject({
       status_emoji: null
     })
   })
@@ -51,7 +51,7 @@ describe('building the profile', () => {
       emoji: 'calendar'
     })
 
-    expect(JSON.parse(profile)).toMatchObject({
+    expect(profile).toMatchObject({
       status_emoji: ':calendar:'
     })
   })
@@ -59,7 +59,7 @@ describe('building the profile', () => {
   it('providing no expiration should set the expiration to null', () => {
     const profile = buildProfile()
 
-    expect(JSON.parse(profile)).toMatchObject({
+    expect(profile).toMatchObject({
       status_expiration: null
     })
   })
@@ -71,7 +71,7 @@ describe('building the profile', () => {
       expire: date
     })
 
-    expect(JSON.parse(profile)).toMatchObject({
+    expect(profile).toMatchObject({
       status_expiration: expectedTimestamp
     })
   })
@@ -103,11 +103,11 @@ describe('handling a status change', () => {
     expect.assertions(2)
 
     mockSetProfile.mockImplementationOnce(successPromise)
-    const expectedProfile = JSON.stringify({
+    const expectedProfile = {
       status_text: null,
       status_emoji: null,
       status_expiration: null
-    })
+    }
 
     await handleStatus()
 
@@ -119,11 +119,11 @@ describe('handling a status change', () => {
     expect.assertions(2)
 
     mockSetProfile.mockImplementation(successPromise)
-    const expectedProfile = JSON.stringify({
+    const expectedProfile = {
       status_text: 'status',
       status_emoji: ':emoji:',
       status_expiration: 1662029100
-    })
+    }
 
     await handleStatus({
       status: 'status',

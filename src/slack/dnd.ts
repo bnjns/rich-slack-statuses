@@ -24,7 +24,7 @@ export const handleDoNotDisturb = async({ enable, start, end }: DoNotDisturbPara
       })
   } else {
     logger.debug('Disabling do not disturb (snooze)')
-    return callWebApi(client => client.dnd.endSnooze())
+    return callWebApi(client => client.dnd.endSnooze({}))
       .then(() => {
         logger.info('Successfully disabled Do Not Disturb')
       })
