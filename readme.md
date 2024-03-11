@@ -47,7 +47,7 @@ which started last and then ends first. If you wish to override the selected eve
 
 ### Prerequisites
 
-- Nodejs 16+
+- Node.js 20
 - Yarn 1
 - GCP service account (required to read from a Google Calendar)
 - [Slack app](#slack-app)
