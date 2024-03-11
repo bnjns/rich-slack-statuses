@@ -43,7 +43,7 @@
     "@slack/web-api": "^6.10.0",
     "googleapis": "^133.0.0",
     "luxon": "^3.4.4",
-    "winston": "^3.11.0"
+    "winston": "^3.12.0"
   },
   "jestSonar": {
     "reportPath": "reports",
