@@ -163,16 +163,16 @@
     tslib "^2.6.2"
     uuid "^9.0.1"
 
-"@aws-sdk/client-ssm@^3.549.0":
-  version "3.549.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/client-ssm/-/client-ssm-3.549.0.tgz#550adfa78230e42a9f7c63b040f9fb2d59f8c1ad"
-  integrity sha512-h5EvM1e09+ybmaCFXVjibWGyBSJ7yNIgKFq1SoifnZ5O4nf6SNNAhbuea1Gq4JCcjvDfzJ4Wl3EqVHf/Jb9oJg==
+"@aws-sdk/client-ssm@^3.554.0":
+  version "3.554.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/client-ssm/-/client-ssm-3.554.0.tgz#bd6019eea532b96a1d4927ca845e343fb7067f5c"
+  integrity sha512-zqc5Pyb0agJ3erp1x2ILoll7mG6atQTD2AFWA5UBFhNa7R0+w+TLvSNnX813X4bv4OySqBYYEtAokoTvV66UZw==
   dependencies:
     "@aws-crypto/sha256-browser" "3.0.0"
     "@aws-crypto/sha256-js" "3.0.0"
-    "@aws-sdk/client-sts" "3.549.0"
-    "@aws-sdk/core" "3.549.0"
-    "@aws-sdk/credential-provider-node" "3.549.0"
+    "@aws-sdk/client-sts" "3.554.0"
+    "@aws-sdk/core" "3.554.0"
+    "@aws-sdk/credential-provider-node" "3.554.0"
     "@aws-sdk/middleware-host-header" "3.535.0"
     "@aws-sdk/middleware-logger" "3.535.0"
     "@aws-sdk/middleware-recursion-detection" "3.535.0"
@@ -183,26 +183,26 @@
     "@aws-sdk/util-user-agent-browser" "3.535.0"
     "@aws-sdk/util-user-agent-node" "3.535.0"
     "@smithy/config-resolver" "^2.2.0"
-    "@smithy/core" "^1.4.1"
+    "@smithy/core" "^1.4.2"
     "@smithy/fetch-http-handler" "^2.5.0"
     "@smithy/hash-node" "^2.2.0"
     "@smithy/invalid-dependency" "^2.2.0"
     "@smithy/middleware-content-length" "^2.2.0"
-    "@smithy/middleware-endpoint" "^2.5.0"
-    "@smithy/middleware-retry" "^2.3.0"
+    "@smithy/middleware-endpoint" "^2.5.1"
+    "@smithy/middleware-retry" "^2.3.1"
     "@smithy/middleware-serde" "^2.3.0"
     "@smithy/middleware-stack" "^2.2.0"
     "@smithy/node-config-provider" "^2.3.0"
     "@smithy/node-http-handler" "^2.5.0"
     "@smithy/protocol-http" "^3.3.0"
-    "@smithy/smithy-client" "^2.5.0"
+    "@smithy/smithy-client" "^2.5.1"
     "@smithy/types" "^2.12.0"
     "@smithy/url-parser" "^2.2.0"
     "@smithy/util-base64" "^2.3.0"
     "@smithy/util-body-length-browser" "^2.2.0"
     "@smithy/util-body-length-node" "^2.3.0"
-    "@smithy/util-defaults-mode-browser" "^2.2.0"
-    "@smithy/util-defaults-mode-node" "^2.3.0"
+    "@smithy/util-defaults-mode-browser" "^2.2.1"
+    "@smithy/util-defaults-mode-node" "^2.3.1"
     "@smithy/util-endpoints" "^1.2.0"
     "@smithy/util-middleware" "^2.2.0"
     "@smithy/util-retry" "^2.2.0"
@@ -1935,18 +1935,7 @@
   dependencies:
     tslib "^2.6.2"
 
-"@smithy/util-defaults-mode-browser@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@smithy/util-defaults-mode-browser/-/util-defaults-mode-browser-2.2.0.tgz#963a9d3c3351272764dd1c5dc07c26f2c8abcb02"
-  integrity sha512-2okTdZaCBvOJszAPU/KSvlimMe35zLOKbQpHhamFJmR7t95HSe0K3C92jQPjKY3PmDBD+7iMkOnuW05F5OlF4g==
-  dependencies:
-    "@smithy/property-provider" "^2.2.0"
-    "@smithy/smithy-client" "^2.5.0"
-    "@smithy/types" "^2.12.0"
-    bowser "^2.11.0"
-    tslib "^2.6.2"
-
-"@smithy/util-defaults-mode-browser@^2.2.1":
+"@smithy/util-defaults-mode-browser@^2.2.0", "@smithy/util-defaults-mode-browser@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@smithy/util-defaults-mode-browser/-/util-defaults-mode-browser-2.2.1.tgz#9db31416daf575d2963c502e0528cfe8055f0c4e"
   integrity sha512-RtKW+8j8skk17SYowucwRUjeh4mCtnm5odCL0Lm2NtHQBsYKrNW0od9Rhopu9wF1gHMfHeWF7i90NwBz/U22Kw==
@@ -1957,20 +1946,7 @@
     bowser "^2.11.0"
     tslib "^2.6.2"
 
-"@smithy/util-defaults-mode-node@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@smithy/util-defaults-mode-node/-/util-defaults-mode-node-2.3.0.tgz#5005058ca0a299f0948b47c288f7c3d4f36cb26e"
-  integrity sha512-hfKXnNLmsW9cmLb/JXKIvtuO6Cf4SuqN5PN1C2Ru/TBIws+m1wSgb+A53vo0r66xzB6E82inKG2J7qtwdi+Kkw==
-  dependencies:
-    "@smithy/config-resolver" "^2.2.0"
-    "@smithy/credential-provider-imds" "^2.3.0"
-    "@smithy/node-config-provider" "^2.3.0"
-    "@smithy/property-provider" "^2.2.0"
-    "@smithy/smithy-client" "^2.5.0"
-    "@smithy/types" "^2.12.0"
-    tslib "^2.6.2"
-
-"@smithy/util-defaults-mode-node@^2.3.1":
+"@smithy/util-defaults-mode-node@^2.3.0", "@smithy/util-defaults-mode-node@^2.3.1":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@smithy/util-defaults-mode-node/-/util-defaults-mode-node-2.3.1.tgz#4613210a3d107aadb3f85bd80cb71c796dd8bf0a"
   integrity sha512-vkMXHQ0BcLFysBMWgSBLSk3+leMpFSyyFj8zQtv5ZyUBx8/owVh1/pPEkzmW/DR/Gy/5c8vjLDD9gZjXNKbrpA==
