@@ -61,48 +61,48 @@
     "@aws-sdk/util-utf8-browser" "^3.0.0"
     tslib "^1.11.1"
 
-"@aws-sdk/client-cognito-identity@3.583.0":
-  version "3.583.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/client-cognito-identity/-/client-cognito-identity-3.583.0.tgz#f25360e29b46af8086f2b8f6bc6e51bcb5ac1c54"
-  integrity sha512-FrkVjrDRsXofw1F/iJqR/DOKPbIakIB+Dr04l25Em4PTWBj29NcQyYW49qcCHF0CPkqQpin8ASXDWzGv7A0yxg==
+"@aws-sdk/client-cognito-identity@3.588.0":
+  version "3.588.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/client-cognito-identity/-/client-cognito-identity-3.588.0.tgz#9e75826babe58a48ad5b01d25dc6fed6b7fbf98b"
+  integrity sha512-UrucggmHTpcR1UmAyA6OtL5ezCGuC34fBGnYSNxgXzmIGtvGKwYZhu580NPWV+vW1MjXnELQxppR/jCuD4HxPg==
   dependencies:
     "@aws-crypto/sha256-browser" "3.0.0"
     "@aws-crypto/sha256-js" "3.0.0"
-    "@aws-sdk/client-sso-oidc" "3.583.0"
-    "@aws-sdk/client-sts" "3.583.0"
-    "@aws-sdk/core" "3.582.0"
-    "@aws-sdk/credential-provider-node" "3.583.0"
+    "@aws-sdk/client-sso-oidc" "3.588.0"
+    "@aws-sdk/client-sts" "3.588.0"
+    "@aws-sdk/core" "3.588.0"
+    "@aws-sdk/credential-provider-node" "3.588.0"
     "@aws-sdk/middleware-host-header" "3.577.0"
     "@aws-sdk/middleware-logger" "3.577.0"
     "@aws-sdk/middleware-recursion-detection" "3.577.0"
-    "@aws-sdk/middleware-user-agent" "3.583.0"
-    "@aws-sdk/region-config-resolver" "3.577.0"
+    "@aws-sdk/middleware-user-agent" "3.587.0"
+    "@aws-sdk/region-config-resolver" "3.587.0"
     "@aws-sdk/types" "3.577.0"
-    "@aws-sdk/util-endpoints" "3.583.0"
+    "@aws-sdk/util-endpoints" "3.587.0"
     "@aws-sdk/util-user-agent-browser" "3.577.0"
-    "@aws-sdk/util-user-agent-node" "3.577.0"
-    "@smithy/config-resolver" "^3.0.0"
-    "@smithy/core" "^2.0.1"
+    "@aws-sdk/util-user-agent-node" "3.587.0"
+    "@smithy/config-resolver" "^3.0.1"
+    "@smithy/core" "^2.1.1"
     "@smithy/fetch-http-handler" "^3.0.1"
     "@smithy/hash-node" "^3.0.0"
     "@smithy/invalid-dependency" "^3.0.0"
     "@smithy/middleware-content-length" "^3.0.0"
-    "@smithy/middleware-endpoint" "^3.0.0"
-    "@smithy/middleware-retry" "^3.0.1"
+    "@smithy/middleware-endpoint" "^3.0.1"
+    "@smithy/middleware-retry" "^3.0.3"
     "@smithy/middleware-serde" "^3.0.0"
     "@smithy/middleware-stack" "^3.0.0"
-    "@smithy/node-config-provider" "^3.0.0"
+    "@smithy/node-config-provider" "^3.1.0"
     "@smithy/node-http-handler" "^3.0.0"
     "@smithy/protocol-http" "^4.0.0"
-    "@smithy/smithy-client" "^3.0.1"
+    "@smithy/smithy-client" "^3.1.1"
     "@smithy/types" "^3.0.0"
     "@smithy/url-parser" "^3.0.0"
     "@smithy/util-base64" "^3.0.0"
     "@smithy/util-body-length-browser" "^3.0.0"
     "@smithy/util-body-length-node" "^3.0.0"
-    "@smithy/util-defaults-mode-browser" "^3.0.1"
-    "@smithy/util-defaults-mode-node" "^3.0.1"
-    "@smithy/util-endpoints" "^2.0.0"
+    "@smithy/util-defaults-mode-browser" "^3.0.3"
+    "@smithy/util-defaults-mode-node" "^3.0.3"
+    "@smithy/util-endpoints" "^2.0.1"
     "@smithy/util-middleware" "^3.0.0"
     "@smithy/util-retry" "^3.0.0"
     "@smithy/util-utf8" "^3.0.0"
@@ -503,14 +503,14 @@
     fast-xml-parser "4.2.5"
     tslib "^2.6.2"
 
-"@aws-sdk/credential-provider-cognito-identity@3.583.0":
-  version "3.583.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/credential-provider-cognito-identity/-/credential-provider-cognito-identity-3.583.0.tgz#45468c8f3f73080cfdfd6708ab07e18c5cfdfb79"
-  integrity sha512-Z6VdDZApTxeI/n8qXBz3IkAdC0tL/mw+cz6EprqpkZG8bejHw78fVjeaVOBBkuskUikjwN4puv0SEJzoEMIqpA==
+"@aws-sdk/credential-provider-cognito-identity@3.588.0":
+  version "3.588.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/credential-provider-cognito-identity/-/credential-provider-cognito-identity-3.588.0.tgz#9856774b8f8f0ece253d36b1114a292e134dc19f"
+  integrity sha512-KGwNFx2iKk/cY5T7J6BZ3Cvrrf45MdfKlBx+maNAA4NaX2bjL2BuA4Jvp+rxc2b2BsrKEUZUBdaMsLK+7KLTGQ==
   dependencies:
-    "@aws-sdk/client-cognito-identity" "3.583.0"
+    "@aws-sdk/client-cognito-identity" "3.588.0"
     "@aws-sdk/types" "3.577.0"
-    "@smithy/property-provider" "^3.0.0"
+    "@smithy/property-provider" "^3.1.0"
     "@smithy/types" "^3.0.0"
     tslib "^2.6.2"
 
@@ -701,25 +701,25 @@
     "@smithy/types" "^3.0.0"
     tslib "^2.6.2"
 
-"@aws-sdk/credential-providers@^3.583.0":
-  version "3.583.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/credential-providers/-/credential-providers-3.583.0.tgz#138f4894cd2f00730b618434bfc86caec253636c"
-  integrity sha512-aD/lw6LJW51f+LgdR54UxyGvXqWZs4HCT310Qf794qFItDWXqhHK4EgS1x41BgAvXPUx0+HSO8OI4eb+AklckA==
+"@aws-sdk/credential-providers@^3.588.0":
+  version "3.588.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/credential-providers/-/credential-providers-3.588.0.tgz#2e93bb22795ced6f00cbfabfdf520e9e4dbd6bc5"
+  integrity sha512-AcxPB/mU6N9ZJnDx0eM62nu7BPQYrnllYoDa9H32o9zUvy3n3z6K4x5FT5hjAbDkjPKeHiRLrokwNuLMHTYdWg==
   dependencies:
-    "@aws-sdk/client-cognito-identity" "3.583.0"
-    "@aws-sdk/client-sso" "3.583.0"
-    "@aws-sdk/client-sts" "3.583.0"
-    "@aws-sdk/credential-provider-cognito-identity" "3.583.0"
-    "@aws-sdk/credential-provider-env" "3.577.0"
-    "@aws-sdk/credential-provider-http" "3.582.0"
-    "@aws-sdk/credential-provider-ini" "3.583.0"
-    "@aws-sdk/credential-provider-node" "3.583.0"
-    "@aws-sdk/credential-provider-process" "3.577.0"
-    "@aws-sdk/credential-provider-sso" "3.583.0"
-    "@aws-sdk/credential-provider-web-identity" "3.577.0"
+    "@aws-sdk/client-cognito-identity" "3.588.0"
+    "@aws-sdk/client-sso" "3.588.0"
+    "@aws-sdk/client-sts" "3.588.0"
+    "@aws-sdk/credential-provider-cognito-identity" "3.588.0"
+    "@aws-sdk/credential-provider-env" "3.587.0"
+    "@aws-sdk/credential-provider-http" "3.587.0"
+    "@aws-sdk/credential-provider-ini" "3.588.0"
+    "@aws-sdk/credential-provider-node" "3.588.0"
+    "@aws-sdk/credential-provider-process" "3.587.0"
+    "@aws-sdk/credential-provider-sso" "3.588.0"
+    "@aws-sdk/credential-provider-web-identity" "3.587.0"
     "@aws-sdk/types" "3.577.0"
-    "@smithy/credential-provider-imds" "^3.0.0"
-    "@smithy/property-provider" "^3.0.0"
+    "@smithy/credential-provider-imds" "^3.1.0"
+    "@smithy/property-provider" "^3.1.0"
     "@smithy/types" "^3.0.0"
     tslib "^2.6.2"
 
@@ -1723,18 +1723,7 @@
     "@smithy/util-middleware" "^3.0.0"
     tslib "^2.6.2"
 
-"@smithy/credential-provider-imds@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@smithy/credential-provider-imds/-/credential-provider-imds-3.0.0.tgz#a290eb0224ef045742e5c806685cf63d44a084f3"
-  integrity sha512-lfmBiFQcA3FsDAPxNfY0L7CawcWtbyWsBOHo34nF095728JLkBX4Y9q/VPPE2r7fqMVK+drmDigqE2/SSQeVRA==
-  dependencies:
-    "@smithy/node-config-provider" "^3.0.0"
-    "@smithy/property-provider" "^3.0.0"
-    "@smithy/types" "^3.0.0"
-    "@smithy/url-parser" "^3.0.0"
-    tslib "^2.6.2"
-
-"@smithy/credential-provider-imds@^3.1.0":
+"@smithy/credential-provider-imds@^3.0.0", "@smithy/credential-provider-imds@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@smithy/credential-provider-imds/-/credential-provider-imds-3.1.0.tgz#7e58b78aa8de13dd04e94829241cd1cbde59b6d3"
   integrity sha512-q4A4d38v8pYYmseu/jTS3Z5I3zXlEOe5Obi+EJreVKgSVyWUHOd7/yaVCinC60QG4MRyCs98tcxBH1IMC0bu7Q==
@@ -1855,15 +1844,7 @@
     "@smithy/types" "^3.0.0"
     tslib "^2.6.2"
 
-"@smithy/property-provider@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@smithy/property-provider/-/property-provider-3.0.0.tgz#ef7a26557c855cc1471b9aa0e05529183e99b978"
-  integrity sha512-LmbPgHBswdXCrkWWuUwBm9w72S2iLWyC/5jet9/Y9cGHtzqxi+GVjfCfahkvNV4KXEwgnH8EMpcrD9RUYe0eLQ==
-  dependencies:
-    "@smithy/types" "^3.0.0"
-    tslib "^2.6.2"
-
-"@smithy/property-provider@^3.1.0":
+"@smithy/property-provider@^3.0.0", "@smithy/property-provider@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@smithy/property-provider/-/property-provider-3.1.0.tgz#b78d4964a1016b90331cc0c770b472160361fde7"
   integrity sha512-Tj3+oVhqdZgemjCiWjFlADfhvLF4C/uKDuKo7/tlEsRQ9+3emCreR2xndj970QSRSsiCEU8hZW3/8JQu+n5w4Q==
