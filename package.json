@@ -42,7 +42,7 @@
     "@google-cloud/local-auth": "^3.0.1",
     "@slack/web-api": "^7.3.2",
     "googleapis": "^140.0.1",
-    "luxon": "^3.4.4",
+    "luxon": "^3.5.0",
     "winston": "^3.14.1"
   },
   "jestSonar": {
