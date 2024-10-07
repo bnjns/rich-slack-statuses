@@ -36,7 +36,7 @@
     "typescript": "^5.6.2"
   },
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.658.1",
+    "@aws-sdk/client-secrets-manager": "^3.665.0",
     "@aws-sdk/client-ssm": "^3.665.0",
     "@aws-sdk/credential-providers": "^3.658.1",
     "@google-cloud/local-auth": "^3.0.1",
