@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.665.0",
-    "@aws-sdk/client-ssm": "^3.665.0",
+    "@aws-sdk/client-ssm": "^3.670.0",
     "@aws-sdk/credential-providers": "^3.665.0",
     "@google-cloud/local-auth": "^3.0.1",
     "@slack/web-api": "^7.6.0",
