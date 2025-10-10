@@ -16,6 +16,9 @@
     <br>
 </p>
 
+> [!WARNING]
+> This app has been deprecated and is no longer under active development. See <https://github.com/bnjns/rich-chat-statuses> as an alternative.
+
 ## 🧐 About
 
 For companies that use Slack for communication, your status is an extremely powerful tool to help let others know your
